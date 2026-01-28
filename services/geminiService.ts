@@ -3,9 +3,10 @@ import { Transaction, TransactionType } from "../types";
 import { EXPENSE_CATEGORIES, INCOME_CATEGORIES } from "../constants";
 
 const getClient = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     console.error("API Key not found in environment variables");
+    console.error("Please check your .env.local file");
     return null;
   }
   return new GoogleGenAI({ apiKey });
@@ -25,7 +26,7 @@ export const suggestCategory = async (description: string, type: TransactionType
 
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         responseMimeType: "application/json",
@@ -77,7 +78,7 @@ export const getFinancialAdvice = async (transactions: Transaction[]): Promise<s
 
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
     return response.text || "Tidak ada saran yang tersedia saat ini.";

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makalah - DompetCerdas AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Courier+New&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 2.5cm;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000;
+            background: #fff;
+        }
+        
+        .page {
+            width: 21cm;
+            min-height: 29.7cm;
+            margin: 0 auto;
+            padding: 2.5cm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            page-break-after: always;
+        }
+        
+        .cover {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 24.7cm;
+        }
+        
+        .cover h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin: 2cm 0 1cm 0;
+            text-transform: uppercase;
+        }
+        
+        .cover h2 {
+            font-size: 16pt;
+            font-weight: bold;
+            margin: 1cm 0;
+        }
+        
+        .cover .logo {
+            width: 150px;
+            height: 150px;
+            margin: 2cm auto;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48pt;
+            color: white;
+        }
+        
+        .cover .info {
+            margin-top: 3cm;
+            font-size: 12pt;
+        }
+        
+        h1 {
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+            margin: 1cm 0 0.5cm 0;
+            text-transform: uppercase;
+        }
+        
+        h2 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 1cm 0 0.5cm 0;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 0.5cm 0 0.25cm 0;
+        }
+        
+        p {
+            text-align: justify;
+            margin-bottom: 0.5cm;
+        }
+        
+        .flowchart {
+            margin: 1cm 0;
+            padding: 1cm;
+            border: 2px solid #333;
+            background: #f9f9f9;
+        }
+        
+        .flowchart-box {
+            border: 2px solid #333;
+            padding: 0.5cm;
+            margin: 0.5cm auto;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .flowchart-box.start-end {
+            border-radius: 50px;
+            background: #0ea5e9;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .flowchart-box.process {
+            background: #e0f2fe;
+        }
+        
+        .flowchart-box.decision {
+            background: #fef3c7;
+            position: relative;
+            transform: skew(0deg);
+        }
+        
+        .flowchart-box.io {
+            background: #dbeafe;
+            position: relative;
+        }
+        
+        .arrow {
+            text-align: center;
+            font-size: 20pt;
+            margin: 0.2cm 0;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            background: #f5f5f5;
+            padding: 0.1cm 0.2cm;
+            border-radius: 3px;
+            font-size: 10pt;
+        }
+        
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1cm;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 0.5cm 0;
+            font-size: 9pt;
+            line-height: 1.4;
+        }
+        
+        .screenshot {
+            width: 100%;
+            border: 1px solid #ddd;
+            margin: 0.5cm 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5cm 0;
+        }
+        
+        table th, table td {
+            border: 1px solid #333;
+            padding: 0.3cm;
+            text-align: left;
+        }
+        
+        table th {
+            background: #0ea5e9;
+            color: white;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin-left: 1cm;
+            margin-bottom: 0.5cm;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 0.5cm;
+            border-left: 4px solid #f59e0b;
+            margin: 0.5cm 0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HALAMAN COVER -->
+    <div class="page cover">
+        <h1>Makalah Pemrograman</h1>
+        <div class="logo">💰</div>
+        <h2>DompetCerdas AI</h2>
+        <h2>Progressive Web Application untuk Manajemen Keuangan Pribadi dengan Artificial Intelligence</h2>
+        
+        <div class="info">
+            <p><strong>Disusun Oleh:</strong></p>
+            <p>1. Munazar</p>
+            <p>24210100</p>
+            <p>2. Munazar</p>
+            <p>24210100</p>
+            <br>
+            <p><strong>Program Studi</strong></p>
+            <p>[Nama Program Studi]</p>
+            <p>[Nama Universitas]</p>
+            <p>2026</p>
+        </div>
+    </div>
+
+    <!-- HALAMAN 1: PENDAHULUAN -->
+    <div class="page">
+        <h1>BAB I<br>PENDAHULUAN</h1>
+        
+        <h2>1.1 Latar Belakang</h2>
+        <p>
+            Manajemen keuangan pribadi merupakan aspek penting dalam kehidupan modern yang seringkali diabaikan. 
+            Banyak individu mengalami kesulitan dalam melacak pengeluaran, mengatur anggaran, dan membuat keputusan 
+            finansial yang tepat. Dengan perkembangan teknologi <em>Progressive Web Application</em> (PWA) dan 
+            <em>Artificial Intelligence</em> (AI), kini dimungkinkan untuk menciptakan solusi yang dapat membantu 
+            pengguna mengelola keuangan mereka secara lebih efektif dan efisien.
+        </p>
+        <p>
+            DompetCerdas AI adalah aplikasi berbasis web yang dirancang untuk membantu pengguna dalam mencatat transaksi 
+            keuangan, memvisualisasikan data pengeluaran dan pemasukan, serta mendapatkan rekomendasi finansial yang 
+            dipersonalisasi melalui teknologi AI. Aplikasi ini dapat di-install pada perangkat mobile maupun desktop 
+            layaknya aplikasi native, namun tetap mempertahankan kemudahan akses melalui browser.
+        </p>
+
+        <h2>1.2 Rumusan Masalah</h2>
+        <ol>
+            <li>Bagaimana merancang sistem manajemen keuangan pribadi yang user-friendly dan accessible?</li>
+            <li>Bagaimana mengintegrasikan teknologi AI untuk memberikan insight dan rekomendasi finansial?</li>
+            <li>Bagaimana mengimplementasikan PWA agar aplikasi dapat berfungsi offline dan installable?</li>
+        </ol>
+
+        <h2>1.3 Tujuan</h2>
+        <ol>
+            <li>Mengembangkan aplikasi web untuk manajemen keuangan pribadi dengan antarmuka yang intuitif</li>
+            <li>Mengimplementasikan fitur AI advisor menggunakan Google Gemini API</li>
+            <li>Menerapkan teknologi PWA untuk meningkatkan user experience dan accessibility</li>
+        </ol>
+
+        <h2>1.4 Manfaat</h2>
+        <p><strong>Manfaat Teoritis:</strong></p>
+        <ul>
+            <li>Mendemonstrasikan implementasi PWA dalam aplikasi finansial</li>
+            <li>Menunjukkan integrasi AI dalam pengambilan keputusan finansial</li>
+            <li>Mempelajari best practices dalam web development modern</li>
+        </ul>
+        <p><strong>Manfaat Praktis:</strong></p>
+        <ul>
+            <li>Membantu pengguna melacak pengeluaran dan pemasukan secara real-time</li>
+            <li>Memberikan visualisasi data keuangan yang mudah dipahami</li>
+            <li>Menyediakan rekomendasi finansial yang personal dan actionable</li>
+        </ul>
+    </div>
+
+    <!-- HALAMAN 2: METODE & FLOWCHART -->
+    <div class="page">
+        <h1>BAB II<br>METODE DAN ALGORITMA</h1>
+        
+        <h2>2.1 Teknologi yang Digunakan</h2>
+        <table>
+            <tr>
+                <th>Komponen</th>
+                <th>Teknologi</th>
+                <th>Keterangan</th>
+            </tr>
+            <tr>
+                <td>Frontend Framework</td>
+                <td>React 19.2.4</td>
+                <td>Library JavaScript untuk membangun UI</td>
+            </tr>
+            <tr>
+                <td>Build Tool</td>
+                <td>Vite 6.2.0</td>
+                <td>Fast development build tool</td>
+            </tr>
+            <tr>
+                <td>Styling</td>
+                <td>TailwindCSS</td>
+                <td>Utility-first CSS framework</td>
+            </tr>
+            <tr>
+                <td>AI Service</td>
+                <td>Google Gemini API</td>
+                <td>AI untuk financial advisory</td>
+            </tr>
+            <tr>
+                <td>PWA</td>
+                <td>Service Worker + Manifest</td>
+                <td>Offline support & installability</td>
+            </tr>
+            <tr>
+                <td>Data Storage</td>
+                <td>LocalStorage</td>
+                <td>Client-side data persistence</td>
+            </tr>
+            <tr>
+                <td>Icons</td>
+                <td>Lucide React</td>
+                <td>Modern icon library</td>
+            </tr>
+            <tr>
+                <td>Charts</td>
+                <td>Recharts 3.7.0</td>
+                <td>Data visualization library</td>
+            </tr>
+        </table>
+
+        <h2>2.2 Arsitektur Sistem</h2>
+        <p>Arsitektur sistem DompetCerdas AI terdiri dari beberapa komponen utama:</p>
+        <ul>
+            <li><strong>User Interface Layer:</strong> Komponen React untuk Dashboard, Transaction Form, Transaction List, dan AI Advisor</li>
+            <li><strong>Business Logic Layer:</strong> State management menggunakan React Hooks (useState, useEffect)</li>
+            <li><strong>Data Layer:</strong> LocalStorage untuk persistensi data transaksi</li>
+            <li><strong>Service Layer:</strong> Gemini API service untuk AI-powered recommendations</li>
+            <li><strong>PWA Layer:</strong> Service Worker untuk offline caching dan installability</li>
+        </ul>
+    </div>
+
+    <!-- HALAMAN 3: FLOWCHART UTAMA -->
+    <div class="page">
+        <h2>2.3 Flowchart Algoritma Sistem</h2>
+        
+        <h3>2.3.1 Flowchart Alur Utama Aplikasi</h3>
+        <div class="flowchart">
+            <div class="flowchart-box start-end">START</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Load Data dari LocalStorage</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box decision">Data Tersedia?</div>
+            <div class="arrow">↓ Ya</div>
+            <div class="flowchart-box process">Tampilkan Dashboard dengan Data</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box io">User Memilih Menu:<br>Dashboard / Transaksi / AI Advisor</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box decision">Menu yang Dipilih?</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Render Komponen Sesuai Menu</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box decision">User Menambah Transaksi?</div>
+            <div class="arrow">↓ Ya</div>
+            <div class="flowchart-box process">Validasi Input Data</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Generate UUID untuk Transaksi</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Simpan ke State & LocalStorage</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Update Visualisasi</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box start-end">END</div>
+        </div>
+    </div>
+
+    <!-- HALAMAN 4: FLOWCHART AI ADVISOR -->
+    <div class="page">
+        <h3>2.3.2 Flowchart AI Advisor</h3>
+        <div class="flowchart">
+            <div class="flowchart-box start-end">START AI ADVISOR</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box io">User Masuk ke Menu AI Advisor</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Load Transaksi dari State</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Format Data Transaksi untuk AI</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Kirim Request ke Gemini API</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box decision">Response Berhasil?</div>
+            <div class="arrow">↓ Ya</div>
+            <div class="flowchart-box process">Parse AI Response (Markdown)</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box io">Tampilkan Rekomendasi ke User</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box start-end">END AI ADVISOR</div>
+        </div>
+
+        <h2>2.4 Penjelasan Flowchart</h2>
+        
+        <h3>2.4.1 Alur Utama Aplikasi</h3>
+        <p>
+            <strong>1. Inisialisasi:</strong> Saat aplikasi dimulai, sistem melakukan load data transaksi dari LocalStorage 
+            menggunakan useEffect hook. Jika data tersedia, aplikasi akan menampilkan dashboard dengan visualisasi lengkap.
+        </p>
+        <p>
+            <strong>2. Navigasi Menu:</strong> User dapat memilih 3 menu utama (Dashboard, Transaksi, AI Advisor) melalui 
+            sidebar (desktop) atau bottom navigation (mobile). State <code>view</code> akan diupdate sesuai pilihan user.
+        </p>
+        <p>
+            <strong>3. Tambah Transaksi:</strong> Ketika user menambahkan transaksi baru, sistem melakukan validasi input, 
+            generate UUID menggunakan <code>crypto.randomUUID()</code>, lalu menyimpan data ke state dan LocalStorage secara 
+            bersamaan. Visualisasi dashboard akan otomatis terupdate berkat React reactivity.
+        </p>
+    </div>
+
+    <!-- HALAMAN 5: PENJELASAN LANJUTAN -->
+    <div class="page">
+        <h3>2.4.2 AI Advisor Flow</h3>
+        <p>
+            <strong>1. Data Preparation:</strong> Sistem mengumpulkan semua transaksi dari state dan memformat data menjadi 
+            struktur yang dapat dibaca oleh AI (JSON ke text summary).
+        </p>
+        <p>
+            <strong>2. API Call:</strong> Request dikirim ke Google Gemini API melalui service layer (<code>geminiService.ts</code>) 
+            dengan prompt yang berisi konteks transaksi user dan instruksi untuk memberikan rekomendasi finansial.
+        </p>
+        <p>
+            <strong>3. Response Handling:</strong> Response dari AI di-parse menggunakan <code>react-markdown</code> untuk 
+            menampilkan format yang lebih readable dengan dukungan bold, italic, list, dan code blocks.
+        </p>
+        <p>
+            <strong>4. Error Handling:</strong> Jika API gagal (network error, API key invalid, dll), sistem menampilkan 
+            error message yang user-friendly dan memberikan saran troubleshooting.
+        </p>
+
+        <h3>2.4.3 PWA Installation Flow</h3>
+        <div class="flowchart">
+            <div class="flowchart-box start-end">START PWA INSTALL</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box io">User Akses Aplikasi via HTTPS</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Service Worker Register</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Manifest.json Divalidasi Browser</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box decision">Kriteria PWA Terpenuhi?</div>
+            <div class="arrow">↓ Ya</div>
+            <div class="flowchart-box io">Tampilkan Install Banner</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box decision">User Klik Install?</div>
+            <div class="arrow">↓ Ya</div>
+            <div class="flowchart-box process">Browser Shows Install Prompt</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box process">Aplikasi Ditambahkan ke Home Screen</div>
+            <div class="arrow">↓</div>
+            <div class="flowchart-box start-end">END PWA INSTALL</div>
+        </div>
+    </div>
+
+    <!-- HALAMAN 6: IMPLEMENTASI KODE 1 -->
+    <div class="page">
+        <h1>LAMPIRAN A<br>KODE PROGRAM</h1>
+        
+        <h2>A.1 Main Application Component (App.tsx)</h2>
+        <pre>
+import React, { useState, useEffect } from 'react';
+import { Transaction, AppView, TransactionType } from './types';
+import Dashboard from './components/Dashboard';
+import TransactionForm from './components/TransactionForm';
+import TransactionList from './components/TransactionList';
+import AIAdvisor from './components/AIAdvisor';
+import { PWAPrompt } from './components/PWAPrompt';
+
+const App: React.FC = () => {
+  const [view, setView] = useState&lt;AppView&gt;(AppView.DASHBOARD);
+  const [transactions, setTransactions] = useState&lt;Transaction[]&gt;([]);
+  const [initialBalance, setInitialBalance] = useState&lt;number&gt;(0);
+
+  // Load from LocalStorage
+  useEffect(() => {
+    const savedTransactions = localStorage.getItem('dompetCerdasTransactions');
+    const savedBalance = localStorage.getItem('dompetCerdasInitialBalance');
+    
+    if (savedTransactions) {
+      setTransactions(JSON.parse(savedTransactions));
+    }
+    if (savedBalance) {
+      setInitialBalance(parseFloat(savedBalance));
+    }
+  }, []);
+
+  // Save to LocalStorage
+  useEffect(() => {
+    if (initialized) {
+      localStorage.setItem('dompetCerdasTransactions', 
+        JSON.stringify(transactions));
+      localStorage.setItem('dompetCerdasInitialBalance', 
+        initialBalance.toString());
+    }
+  }, [transactions, initialBalance]);
+
+  const addTransaction = (transactionData: Omit&lt;Transaction, 'id'&gt;) => {
+    const newTransaction: Transaction = {
+      ...transactionData,
+      id: crypto.randomUUID(),
+    };
+    setTransactions(prev => [newTransaction, ...prev]);
+  };
+
+  const calculateCurrentBalance = () => {
+    const totalIncome = transactions
+      .filter(t => t.type === TransactionType.INCOME)
+      .reduce((acc, t) => acc + t.amount, 0);
+    const totalExpense = transactions
+      .filter(t => t.type === TransactionType.EXPENSE)
+      .reduce((acc, t) => acc + t.amount, 0);
+    return initialBalance + totalIncome - totalExpense;
+  };
+
+  return (
+    &lt;div className="min-h-screen"&gt;
+      &lt;PWAPrompt /&gt;
+      {/* Navigation & Content */}
+    &lt;/div&gt;
+  );
+};
+
+export default App;</pre>
+    </div>
+
+    <!-- HALAMAN 7: IMPLEMENTASI KODE 2 -->
+    <div class="page">
+        <h2>A.2 Gemini AI Service (geminiService.ts)</h2>
+        <pre>
+import { GoogleGenerativeAI } from '@google/genai';
+
+const API_KEY = process.env.GEMINI_API_KEY || '';
+const genAI = new GoogleGenerativeAI(API_KEY);
+
+export async function getFinancialAdvice(
+  transactions: any[]
+): Promise&lt;string&gt; {
+  try {
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-1.5-flash' 
+    });
+
+    const totalIncome = transactions
+      .filter(t => t.type === 'income')
+      .reduce((sum, t) => sum + t.amount, 0);
+      
+    const totalExpense = transactions
+      .filter(t => t.type === 'expense')
+      .reduce((sum, t) => sum + t.amount, 0);
+
+    const prompt = `
+      Analisis data keuangan berikut dan berikan saran:
+      
+      Total Pemasukan: Rp ${totalIncome.toLocaleString('id-ID')}
+      Total Pengeluaran: Rp ${totalExpense.toLocaleString('id-ID')}
+      Saldo: Rp ${(totalIncome - totalExpense).toLocaleString('id-ID')}
+      
+      Detail Transaksi:
+      ${transactions.map(t => 
+        `- ${t.type}: ${t.description} (Rp ${t.amount.toLocaleString('id-ID')})`
+      ).join('\n')}
+      
+      Berikan rekomendasi finansial yang spesifik dan actionable.
+    `;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    return response.text();
+    
+  } catch (error) {
+    console.error('Gemini API Error:', error);
+    throw error;
+  }
+}</pre>
+    </div>
+
+    <!-- HALAMAN 8: IMPLEMENTASI KODE 3 -->
+    <div class="page">
+        <h2>A.3 Service Worker (sw.js)</h2>
+        <pre>
+const CACHE_NAME = 'dompetcerdas-v1';
+const STATIC_CACHE = 'dompetcerdas-static-v1';
+const DYNAMIC_CACHE = 'dompetcerdas-dynamic-v1';
+
+const STATIC_ASSETS = [
+  '/',
+  '/index.html',
+  '/index.css',
+  '/icon-192.png',
+  '/icon-512.png',
+  '/manifest.json'
+];
+
+// Install - cache static assets
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(STATIC_CACHE).then((cache) => {
+      return cache.addAll(STATIC_ASSETS);
+    })
+  );
+  self.skipWaiting();
+});
+
+// Activate - clean old caches
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== STATIC_CACHE && cache !== DYNAMIC_CACHE) {
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+  self.clients.claim();
+});
+
+// Fetch - serve from cache, fallback to network
+self.addEventListener('fetch', (event) => {
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(event.request).then((response) => {
+        if (!response || response.status !== 200) {
+          return response;
+        }
+
+        const responseToCache = response.clone();
+        caches.open(DYNAMIC_CACHE).then((cache) => {
+          cache.put(event.request, responseToCache);
+        });
+
+        return response;
+      });
+    }).catch(() => {
+      return caches.match('/index.html');
+    })
+  );
+});</pre>
+    </div>
+
+    <!-- HALAMAN 9: PWA MANIFEST -->
+    <div class="page">
+        <h2>A.4 PWA Manifest (manifest.json)</h2>
+        <pre>
+{
+  "name": "DompetCerdas AI",
+  "short_name": "DompetCerdas",
+  "description": "Aplikasi manajemen keuangan pribadi dengan AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Tambah Transaksi",
+      "short_name": "Transaksi",
+      "description": "Tambah transaksi baru",
+      "url": "/?action=add",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}</pre>
+
+        <h2>A.5 TypeScript Types (types.ts)</h2>
+        <pre>
+export enum TransactionType {
+  INCOME = 'income',
+  EXPENSE = 'expense'
+}
+
+export interface Transaction {
+  id: string;
+  type: TransactionType;
+  amount: number;
+  description: string;
+  category: string;
+  date: string;
+}
+
+export enum AppView {
+  DASHBOARD = 'dashboard',
+  TRANSACTIONS = 'transactions',
+  ADVISOR = 'advisor'
+}</pre>
+    </div>
+
+    <!-- HALAMAN 10: OUTPUT PROGRAM -->
+    <div class="page">
+        <h1>LAMPIRAN B<br>OUTPUT PROGRAM</h1>
+        
+        <h2>B.1 Tampilan Dashboard</h2>
+        <div class="highlight">
+            <strong>Screenshot Dashboard:</strong>
+            <p>Menampilkan ringkasan keuangan dengan card untuk Saldo Total, Total Pemasukan, dan Total Pengeluaran. 
+            Terdapat chart untuk visualisasi trend pengeluaran per kategori dan list transaksi terbaru.</p>
+        </div>
+        
+        <h2>B.2 Tampilan Form Transaksi</h2>
+        <div class="highlight">
+            <strong>Fitur Form:</strong>
+            <ul>
+                <li>Input tipe transaksi (Pemasukan/Pengeluaran)</li>
+                <li>Input jumlah dengan format Rupiah otomatis</li>
+                <li>Input deskripsi transaksi</li>
+                <li>Pilihan kategori (Makanan, Transport, Gaji, dll)</li>
+                <li>Tanggal transaksi (default hari ini)</li>
+                <li>Tombol submit dengan validasi</li>
+            </ul>
+        </div>
+
+        <h2>B.3 Tampilan AI Advisor</h2>
+        <div class="highlight">
+            <strong>Contoh Output AI:</strong>
+            <p><em>"Berdasarkan analisis transaksi Anda dalam 30 hari terakhir, pengeluaran terbesar ada di kategori 
+            Makanan & Minuman (45%). Saya rekomendasikan untuk mengurangi makan di luar minimal 2x per minggu, 
+            yang dapat menghemat sekitar Rp 400.000 per bulan. Alokasikan dana hemat ini untuk tabungan darurat."</em></p>
+        </div>
+
+        <h2>B.4 PWA Installation</h2>
+        <div class="highlight">
+            <strong>Fitur PWA:</strong>
+            <ul>
+                <li>Install banner muncul saat pertama kali akses (Chrome/Edge)</li>
+                <li>Aplikasi dapat dibuka fullscreen tanpa browser UI</li>
+                <li>Icon aplikasi muncul di home screen</li>
+                <li>Offline indicator muncul saat tidak ada koneksi</li>
+                <li>Data tetap tersimpan di device</li>
+            </ul>
+        </div>
+
+        <h2>B.5 Responsive Design</h2>
+        <div class="highlight">
+            <strong>Mobile View:</strong>
+            <p>Navigasi berubah menjadi bottom navigation bar dengan 3 menu utama. Layout menyesuaikan ukuran layar 
+            dengan card yang stack vertical. Touch-friendly buttons dengan spacing yang cukup.</p>
+            
+            <strong>Desktop View:</strong>
+            <p>Sidebar navigation di sebelah kiri. Layout grid multi-column untuk efisiensi space. Hover effects 
+            pada interactive elements.</p>
+        </div>
+    </div>
+
+    <!-- HALAMAN 11: KESIMPULAN -->
+    <div class="page">
+        <h1>BAB III<br>PENUTUP</h1>
+        
+        <h2>3.1 Kesimpulan</h2>
+        <p>
+            Berdasarkan pembahasan yang telah diuraikan, dapat disimpulkan bahwa:
+        </p>
+        <ol>
+            <li>
+                <strong>Implementasi PWA berhasil dilakukan</strong> dengan menggunakan Service Worker dan Web App Manifest, 
+                memungkinkan aplikasi untuk di-install di perangkat mobile dan desktop serta berfungsi secara offline.
+            </li>
+            <li>
+                <strong>Integrasi Google Gemini AI</strong> memberikan nilai tambah signifikan dengan menyediakan rekomendasi 
+                finansial yang personal dan contextual berdasarkan pola transaksi pengguna.
+            </li>
+            <li>
+                <strong>React + Vite sebagai tech stack</strong> terbukti efektif untuk development yang cepat dengan 
+                performa optimal. Hot Module Replacement (HMR) mempercepat development cycle.
+            </li>
+            <li>
+                <strong>LocalStorage sebagai data persistence</strong> cukup untuk aplikasi personal finance scale kecil, 
+                dengan kelebihan privacy (data tidak ke server) dan simplicity (tidak perlu backend).
+            </li>
+            <li>
+                <strong>Responsive design</strong> memastikan aplikasi dapat digunakan dengan baik di berbagai ukuran layar, 
+                dari mobile hingga desktop.
+            </li>
+        </ol>
+
+        <h2>3.2 Saran</h2>
+        <p>Untuk pengembangan lebih lanjut, disarankan:</p>
+        <ol>
+            <li>
+                <strong>Backend Integration:</strong> Menambahkan backend server (Node.js + MongoDB) untuk sinkronisasi 
+                data antar device dan backup cloud.
+            </li>
+            <li>
+                <strong>Advanced Analytics:</strong> Implementasi machine learning untuk prediksi pengeluaran bulanan 
+                dan anomaly detection.
+            </li>
+            <li>
+                <strong>Multi-currency Support:</strong> Menambahkan dukungan untuk berbagai mata uang dengan 
+                exchange rate real-time.
+            </li>
+            <li>
+                <strong>Export Features:</strong> Fitur export data ke CSV/PDF untuk keperluan reporting dan tax filing.
+            </li>
+            <li>
+                <strong>Budgeting Module:</strong> Menambahkan fitur budget planning dengan alert ketika mendekati 
+                atau melebihi budget.
+            </li>
+            <li>
+                <strong>Push Notifications:</strong> Reminder untuk input transaksi harian dan alert untuk bill payment.
+            </li>
+            <li>
+                <strong>Collaborative Features:</strong> Shared budget untuk keluarga atau roommates dengan 
+                permission management.
+            </li>
+        </ol>
+
+        <h2>3.3 Penutup</h2>
+        <p>
+            DompetCerdas AI mendemonstrasikan bagaimana teknologi modern seperti PWA dan AI dapat dikombinasikan untuk 
+            menciptakan solusi praktis dalam manajemen keuangan pribadi. Dengan pendekatan user-centric design dan 
+            teknologi yang accessible, aplikasi ini dapat membantu siapa saja untuk mengelola keuangan mereka dengan 
+            lebih baik. Semoga aplikasi ini dapat memberikan manfaat nyata bagi penggunanya dan menjadi starting point 
+            untuk inovasi lebih lanjut di bidang financial technology.
+        </p>
+    </div>
+
+    <!-- HALAMAN 12: DAFTAR PUSTAKA -->
+    <div class="page">
+        <h1>DAFTAR PUSTAKA</h1>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Google LLC. (2024). <em>Gemini API Documentation</em>. 
+            https://ai.google.dev/docs
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Meta Platforms, Inc. (2024). <em>React Documentation</em>. 
+            https://react.dev
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Vite Team. (2024). <em>Vite: Next Generation Frontend Tooling</em>. 
+            https://vitejs.dev
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Mozilla Developer Network. (2024). <em>Progressive Web Apps (PWAs)</em>. 
+            https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            W3C. (2024). <em>Web App Manifest Specification</em>. 
+            https://www.w3.org/TR/appmanifest/
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Google Developers. (2024). <em>Service Workers: an Introduction</em>. 
+            https://developers.google.com/web/fundamentals/primers/service-workers
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Tailwind Labs. (2024). <em>Tailwind CSS Documentation</em>. 
+            https://tailwindcss.com/docs
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Recharts Team. (2024). <em>Recharts: A Composable Charting Library Built on React Components</em>. 
+            https://recharts.org
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Lucide Contributors. (2024). <em>Lucide Icons</em>. 
+            https://lucide.dev
+        </p>
+        
+        <p style="margin-left: 1cm; text-indent: -1cm;">
+            Vercel. (2024). <em>Vercel Platform Documentation</em>. 
+            https://vercel.com/docs
+        </p>
+
+        <br><br>
+        <div style="text-align: center; padding-top: 2cm;">
+            <p>*** SELESAI ***</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import AIAdvisor from './components/AIAdvisor';
+import { PWAPrompt } from './components/PWAPrompt';
 
 // Temporary mock data if local storage is empty
 import { MOCK_TRANSACTIONS } from './constants';
@@ -69,6 +70,9 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans text-slate-900">
+      
+      {/* PWA Install Prompt & Offline Indicator */}
+      <PWAPrompt />
       
       {/* Mobile Top Bar */}
       <div className="md:hidden bg-white/90 backdrop-blur-md border-b border-slate-200 px-4 py-3 sticky top-0 z-20 flex justify-between items-center shadow-sm">
